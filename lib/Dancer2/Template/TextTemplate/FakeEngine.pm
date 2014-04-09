@@ -1,18 +1,18 @@
 package Dancer2::Template::TextTemplate::FakeEngine;
 # ABSTRACT: Fake Template::Toolkit-like, persistent engine around Text::Template.
 
-use 5.010001;
+use 5.008_009;
 use strict;
 use warnings;
-use utf8;
 
-our $VERSION = '0.1'; # VERSION
+our $VERSION = '0.2'; # VERSION
 
 use Moo;
 use MooX::Types::MooseLike::Base qw( InstanceOf Bool ArrayRef Int Str );
 use Carp 'croak';
 use Text::Template 1.46;
 use CHI;
+use Safe 2.14;
 use Scalar::Util 'blessed';
 use namespace::clean;
 
@@ -63,6 +63,82 @@ has cache_stringrefs => (
 );
 
 
+has prepend => (
+    is => 'rw',
+    isa => Str,
+    default => <<'END',
+        use strict;
+        use warnings FATAL => 'all';
+END
+);
+
+# Text::Template's HASH variables (as exclusively used by FakeEngine) are not
+# installed in the template evaluation package in a "use strict"-compatible
+# way, but we enforce "use strict" in PREPEND, so we need to declare ourselves
+# these variables just after the PREPENDed code.
+sub _declare_arg_variables {
+    my $hash = shift;
+    my @decls;
+    while ( my ( $name, $value ) = each %$hash ) {
+        next unless defined $value;
+        push @decls, do {
+            if    ( ref $value eq 'ARRAY' ) { '@' }
+            elsif ( ref $value eq 'HASH' )  { '%' }
+            else                            { '$' }
+          }
+          . $name;
+    }
+    return join "\n" => map { "our $_;" } @decls;
+}
+
+
+has safe => (
+    is      => 'rw',
+    isa     => Bool,
+    default => 1,
+);
+
+has safe_opcodes => (
+    is      => 'rw',
+    isa     => ArrayRef[Str],
+    default => sub { [qw[ :default :load ]] },
+    trigger => sub {
+        my $self = shift;
+        $self->_safe->permit_only(@{ $_[0] });
+    },
+);
+
+has safe_disposable => (
+    is      => 'rw',
+    isa     => Bool,
+    default => 0,
+    trigger => sub {
+        my $self = shift;
+        $self->_rebuild_safe if $_[0];
+    },
+);
+
+has _safe => (
+    is      => 'rw',
+    isa     => InstanceOf['Safe'],
+    lazy    => 1,
+    builder => '_build_safe',
+);
+
+sub _build_safe {
+    my $self = shift;
+    my $safe = Safe->new;
+    $safe->permit_only(@{ $self->safe_opcodes });
+    return $safe;
+}
+
+sub _rebuild_safe {
+    my $self = shift;
+    $self->_safe($self->_build_safe) if $self->safe_disposable;
+    return;
+}
+
+
 sub process {
     my ( $self, $template, $tokens ) = @_;
 
@@ -82,11 +158,16 @@ sub process {
         );
     }
 
-    my $computed = $tt->fill_in( HASH => $tokens )
-      or our $ERROR = $Text::Template::ERROR;
+    my $computed = $tt->fill_in(
+        HASH    => $tokens,
+        PREPEND => $self->prepend . _declare_arg_variables($tokens),
+        $self->safe ? ( SAFE => $self->_safe ) : (),
+    ) or our $ERROR = $Text::Template::ERROR;
+
+    $self->_rebuild_safe if $self->safe && $self->safe_disposable;
 
     if ( defined $computed && $self->caching ) {
-        if ( ref $template ) {    # string refs (never expire)
+        if ( ref $template && $self->cache_stringrefs ) {
             $self->_cache->set( $$template, $tt, 'never' );
         }
         else {                    # filenames
@@ -114,7 +195,7 @@ Dancer2::Template::TextTemplate::FakeEngine - Fake Template::Toolkit-like, persi
 
 =head1 VERSION
 
-version 0.1
+version 0.2
 
 =head1 SYNOPSIS
 
@@ -176,6 +257,17 @@ However, you may want to disable this behavior for string-ref-templates if you
 use a lot of such templates only once (they would fill your cache). By setting
 C<cache_stringrefs> to C<0>, you tell FakeEngine not to cache (at all) your
 string-ref-templates.
+
+=head2 prepend
+
+Contains the string of Perl code added at the top of each evaluated template.
+See L<PREPEND in
+Text::Template|https://metacpan.org/pod/Text::Template#PREPEND-feature-and-using-strict-in-templates>.
+
+=head2 safe, safe_opcodes, safe_disposable
+
+These attributes are directly linked to the eponymous options in
+L<Dancer2::Template::TextTemplate>.
 
 =head1 METHODS
 

@@ -1,12 +1,11 @@
 package Dancer2::Template::TextTemplate;
 # ABSTRACT: Text::Template engine for Dancer2
 
-use 5.010001;
+use 5.008_009;
 use strict;
 use warnings;
-use utf8;
 
-our $VERSION = '0.1'; # VERSION
+our $VERSION = '0.2'; # VERSION
 
 use Carp 'croak';
 use Moo;
@@ -23,7 +22,7 @@ has '+engine' =>
 sub _build_engine {
     my $self = shift;
     my $engine = Dancer2::Template::TextTemplate::FakeEngine->new;
-    for (qw/ caching expires delimiters cache_stringrefs /) {
+    for (qw/ caching expires delimiters cache_stringrefs prepend /) {
         $engine->$_($self->config->{$_}) if $self->config->{$_};
     }
     return $engine;
@@ -32,7 +31,7 @@ sub _build_engine {
 
 sub render {
     my ( $self, $template, $tokens ) = @_;
-    return $self->engine->process( $template, $tokens )
+    $self->engine->process( $template, $tokens )
       or croak $Dancer2::Template::TextTemplate::FakeEngine::ERROR;
 }
 
@@ -50,7 +49,7 @@ Dancer2::Template::TextTemplate - Text::Template engine for Dancer2
 
 =head1 VERSION
 
-version 0.1
+version 0.2
 
 =head1 SYNOPSIS
 
@@ -64,6 +63,29 @@ B<This is an alpha version: it basically works, but it has not been
 extensively tested and it misses interesting features.>
 
 This template engine allows you to use L<Text::Template> in L<Dancer2>.
+
+=head2 Configuration
+
+Here are all available options, as you would set them in a C<config.yml>, with
+their B<default> values:
+
+    template: text_template
+    engines:
+        text_template:
+            caching: 1
+            expires: 3600               # in seconds; use 0 to disable
+            cache_stringrefs: 1
+            delimiters: [ "{", "}" ]
+            prepend: |
+                use strict;
+                use warnings;
+            safe: 1
+            safe_opcodes: [ ":default", ":load" ]
+            safe_disposable: 0
+
+The following sections explain what these options do.
+
+=head2 Global caching - C<caching>, C<expires>
 
 Contrary to other template engines (like L<Template::Toolkit>), where I<one>
 instance may work on I<multiple> templates, I<one> L<Text::Template> instance
@@ -87,32 +109,65 @@ L<CHI>) B<by default>.
 
 If you're OK with caching, you should specify a B<timeout> (C<expires>) after
 which cached Text::Template instances are to be refreshed, since you might
-have changed your template sources without restarting Dancer2. Use the value
-C<0> to tell the engine that templates never expire.
+have changed your template sources without restarting Dancer2. By default,
+this engine uses C<expires: 3600> (one hour). Use C<0> to tell it that
+templates never expire.
 
-To enable caching in your C<config.yml>:
+If you don't want any caching, just set C<caching> to C<0>.
 
-    template: text_template
-    engines:
-        text_template:
-            caching: 1                  # default
-            expires: 3600               # in seconds; default; 0 to disable
-            cache_stringrefs: 1         # default
-            delimiters: [ "{", "}" ]    # default
+=head2 "String-ref templates" caching - C<cache_stringrefs>
 
 Just like with L<Dancer2::Template::Toolkit>, you can pass templates either as
 filenames (for a template file) or string references ("string-refs", which are
 dereferenced and used as the template's content). In some cases, you may want
-to disable caching just for string-refs: for instance, if you generate a lot
+to disable caching for string-refs only: for instance, if you generate a lot
 of templates on-the-fly and use them only once, caching them is useless and
-fills your cache. You can therefore disable caching for string-refs only by
+fills your cache. You can therefore disable caching I<for string-refs only> by
 setting C<cache_stringrefs> to C<0>.
+
+Note that if you set C<caching> to C<0>, you don't have I<any> caching, so
+C<cache_stringrefs> is ignored.
+
+=head2 Custom delimiters - C<delimiters>
 
 The C<delimiters> option allows you to specify a custom delimiters pair
 (opening and closing) for your templates. See the L<Text::Template>
 documentation for more about delimiters, since this module just pass them to
 Text::Template. This option defaults to C<{> and C<}>, meaning that in C<< a
 {b} c >>, C<b> (and only C<b>) will be interpolated.
+
+=head2 Prepending code - C<prepend>
+
+This option specifies Perl code run by Text::Template I<before> evaluating
+each template. For instance, with this option's default value, i.e.:
+
+    use strict;
+    use warnings FATAL => 'all';
+
+then evaluating the following template:
+
+    you're the { $a + 1 }th visitor!
+
+is the same as evaluating:
+
+    {
+        use strict;
+        use warnings FATAL => 'all';
+        ""
+    }you're the { $a + 1 }th visitor!
+
+and thus you'd get:
+
+    Program fragment delivered error
+    ``Use of uninitialized value $a in addition (+) [...]
+
+in your template output if you forgot to pass a value for C<$a>.
+
+If you don't want anything prepended to your templates, simply give a
+non-dying, side-effects-free Perl expression to C<prepend>, like C<0> or
+C<"">.
+
+=head2 Running in a L<Safe> - C<safe>, C<safe_opcodes>, C<safe_disposable>
 
 =head1 METHODS
 
@@ -138,6 +193,29 @@ C<Text::Template::fill_in>.
 =back
 
 L<Carp|Croak>s if an error occurs.
+
+=for :stopwords optags
+
+This option (enabled by default) makes your templates to be evaluated in a
+L<Safe> compartment, i.e. where some potentially dangerous operations (such as
+C<system>) are disabled. Note that the same Safe compartment will be used to
+evaluate all your templates, unless you explicitly specify C<safe_disposable:
+1> (one compartment per template I<evaluation>).
+
+This Safe uses the C<:default> opcode set (see L<the Opcode
+documentation|https://metacpan.org/pod/Opcode#Predefined-Opcode-Tags>, unless
+you specify it otherwise with the C<safe_opcodes> option. You can, of course,
+mix opcodes and optags, as in:
+
+    safe_opcodes:
+        - ":default"
+        - "time"
+
+which enables the default opcode set I<and> C<time>.
+
+B<Be careful> with the opcodes you allow/forbid: for instance, if you don't
+allow C<require>, you will break the default value of the C<prepend> option
+(which calls C<use>).
 
 =head1 AUTHOR
 

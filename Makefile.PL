@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use 5.010001;
+use 5.008_009;
 
 use ExtUtils::MakeMaker 6.30;
 
@@ -27,11 +27,11 @@ my %WriteMakefileArgs = (
     "Dancer2::Core::Types" => 0,
     "Moo" => 0,
     "MooX::Types::MooseLike::Base" => 0,
+    "Safe" => "2.14",
     "Scalar::Util" => 0,
     "Text::Template" => "1.46",
     "namespace::clean" => 0,
     "strict" => 0,
-    "utf8" => 0,
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
@@ -41,7 +41,7 @@ my %WriteMakefileArgs = (
     "Test::More" => "0.88",
     "autodie" => 0
   },
-  "VERSION" => "0.1",
+  "VERSION" => "0.2",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -56,6 +56,7 @@ my %FallbackPrereqs = (
   "File::Temp" => 0,
   "Moo" => 0,
   "MooX::Types::MooseLike::Base" => 0,
+  "Safe" => "2.14",
   "Scalar::Util" => 0,
   "Test::API" => 0,
   "Test::Fatal" => 0,
@@ -64,7 +65,6 @@ my %FallbackPrereqs = (
   "autodie" => 0,
   "namespace::clean" => 0,
   "strict" => 0,
-  "utf8" => 0,
   "warnings" => 0
 );
 
