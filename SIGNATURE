@@ -1,0 +1,54 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.73.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+SHA1 3ad29c3c60b3e15eea1390b929f5f1952fb325b4 Changes
+SHA1 94ed2b13dfcf3b32c0531f43ff8ff53360b0b3e3 INSTALL
+SHA1 a9ac9ac7df04d9cc581ea449e0fb8290551d0442 LICENSE
+SHA1 02ac5efe7d098abcf85d0079c45221476e814f7b MANIFEST
+SHA1 f3d7ab65ce55ec286d892b701e122c9d26358735 META.json
+SHA1 fbdce35f2b149e7e904353f8be632e43d3cdf07a META.yml
+SHA1 6c2d51e0256a631fee9ef42dde7b50b49e837133 Makefile.PL
+SHA1 1791cf9bd43e853e99c9b5e9e87069a7cff72d98 README
+SHA1 cd89baefd166447e35fcafebaefbcbd3b8354bb2 TODO
+SHA1 5977bd593f476de85ae764f2c4867522d19c4955 dist.ini
+SHA1 eb737cb60a7b464b73501a72c246f2031af7a521 docs/html/Dancer2-Template-TextTemplate-FakeEngine.html
+SHA1 614646abf60d3f1303dbaee2309add8385eb8fa8 docs/html/Dancer2-Template-TextTemplate.html
+SHA1 237969fa30c589cac6d85c312c7133c04dd36ddc lib/Dancer2/Template/TextTemplate.pm
+SHA1 5a2c71f0f9bef66f59ed80349d6c6a5d61175843 lib/Dancer2/Template/TextTemplate/FakeEngine.pm
+SHA1 26df31ea522c73ae582eca62974f05f6fb572e74 t/000-report-versions-tiny.t
+SHA1 8efe9342265f0288fadb6019b6158f38d33fd580 t/00_base.t
+SHA1 ee65c70663018017e0e4a6881adcf7b2027767ef t/01_engine.t
+SHA1 fa45d6e6ab1cd421349dea4ef527bfd5cdc8a09e t/author-critic.t
+SHA1 b7964cbcd01bb39ea8c93ccaec5ab705e1805282 t/author-pod-spell.t
+SHA1 beb50662ee324c28864bb3931806e3f7bd594b2a t/release-changes_has_content.t
+SHA1 d165f8ec069354540640243399f536af695046dd t/release-distmeta.t
+SHA1 a032c41ef6887fab1b900669c2d304fab46680e2 t/release-eol.t
+SHA1 3d3e9f1370ee4c83d847fe06b77bae14ac1e131a t/release-kwalitee.t
+SHA1 9a3c4461d5950e40f650d002e85196e077954917 t/release-minimum-version.t
+SHA1 d4cdbc3d71deb103de6881008024aa1a4de9d94c t/release-no-tabs.t
+SHA1 5cf386f49901e8ccaad5ab271036754d67114081 t/release-pod-coverage.t
+SHA1 dc3eefcab3399f9a70861c332bb4a81ddcbb45e4 t/release-pod-syntax.t
+SHA1 b3350d3d17bb2fa4e23075ec8d786505cc565539 t/release-test-version.t
+SHA1 d7221447937ab93002a123801def7be09748c106 t/release-unused-vars.t
+SHA1 7e6909d2696e211381519ecc34ba60ab007a9619 t/test.template
+SHA1 dd98a2a084daf65fba9ecda2bea317e11cd1c690 weaver.ini
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.11 (GNU/Linux)
+
+iF4EAREIAAYFAlNEukAACgkQdpkN8JGlVVpdzAD/bU+qBUOzUHDdYnNCop1Gkxw4
+8keRGs8WVgEbcVrkTWUA/A9DF5zUS/ce2dGJLjiHeEHp8WAoxbk08786nMl08yeX
+=YTRm
+-----END PGP SIGNATURE-----
