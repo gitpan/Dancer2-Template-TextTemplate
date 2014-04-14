@@ -5,7 +5,7 @@ use 5.008_009;
 use strict;
 use warnings;
 
-our $VERSION = '0.2'; # VERSION
+our $VERSION = '1.0'; # TRIAL VERSION
 
 use Carp 'croak';
 use Moo;
@@ -49,7 +49,7 @@ Dancer2::Template::TextTemplate - Text::Template engine for Dancer2
 
 =head1 VERSION
 
-version 0.2
+version 1.0
 
 =head1 SYNOPSIS
 
@@ -58,9 +58,6 @@ To use this engine, you may configure L<Dancer2> via C<config.yml>:
     template: text_template
 
 =head1 DESCRIPTION
-
-B<This is an alpha version: it basically works, but it has not been
-extensively tested and it misses interesting features.>
 
 This template engine allows you to use L<Text::Template> in L<Dancer2>.
 
@@ -169,6 +166,25 @@ C<"">.
 
 =head2 Running in a L<Safe> - C<safe>, C<safe_opcodes>, C<safe_disposable>
 
+This option (enabled by default) makes your templates to be evaluated in a
+L<Safe> compartment, i.e. where some potentially dangerous operations (such as
+C<system>) are disabled. Note that the same Safe compartment will be used to
+evaluate all your templates, unless you explicitly specify C<safe_disposable:
+1> (one compartment per template I<evaluation>).
+
+This Safe uses the C<:default> and C<:load> opcode sets (see L<the Opcode
+documentation|https://metacpan.org/pod/Opcode#Predefined-Opcode-Tags>), unless
+you specify it otherwise with the C<safe_opcodes> option. You can, of course,
+mix opcodes and optags, as in:
+
+    safe_opcodes:
+        - ":default"
+        - "time"
+
+which enables the default opcode set I<and> C<time>. But B<be careful>: with
+the previous example for instance, you don't allow C<require>, and thus break
+the default value of the C<prepend> option (which contains C<use>)!
+
 =head1 METHODS
 
 =head2 render( $template, \%tokens )
@@ -179,43 +195,15 @@ Renders the template.
 
 =item *
 
-C<$template> is either a (string) filename for the template file or a
-
-reference to a string that contains the template.
+C<$template> is either a (string) filename for the template file or a reference to a string that contains the template.
 
 =item *
 
-C<\%tokens> is a hashref for the tokens you wish to pass to
-
-L<Text::Template> for rendering, as if you were using
-C<Text::Template::fill_in>.
+C<\%tokens> is a hashref for the tokens you wish to pass to L<Text::Template> for rendering, as if you were using C<Text::Template::fill_in>.
 
 =back
 
 L<Carp|Croak>s if an error occurs.
-
-=for :stopwords optags
-
-This option (enabled by default) makes your templates to be evaluated in a
-L<Safe> compartment, i.e. where some potentially dangerous operations (such as
-C<system>) are disabled. Note that the same Safe compartment will be used to
-evaluate all your templates, unless you explicitly specify C<safe_disposable:
-1> (one compartment per template I<evaluation>).
-
-This Safe uses the C<:default> opcode set (see L<the Opcode
-documentation|https://metacpan.org/pod/Opcode#Predefined-Opcode-Tags>, unless
-you specify it otherwise with the C<safe_opcodes> option. You can, of course,
-mix opcodes and optags, as in:
-
-    safe_opcodes:
-        - ":default"
-        - "time"
-
-which enables the default opcode set I<and> C<time>.
-
-B<Be careful> with the opcodes you allow/forbid: for instance, if you don't
-allow C<require>, you will break the default value of the C<prepend> option
-(which calls C<use>).
 
 =head1 AUTHOR
 

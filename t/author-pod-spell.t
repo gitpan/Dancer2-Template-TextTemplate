@@ -18,6 +18,7 @@ use Pod::Wordlist;
 add_stopwords(<DATA>);
 all_pod_files_spelling_ok( qw( bin lib  ) );
 __DATA__
+optags
 Thibaut
 Le
 Page

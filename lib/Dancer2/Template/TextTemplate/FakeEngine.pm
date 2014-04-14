@@ -5,7 +5,7 @@ use 5.008_009;
 use strict;
 use warnings;
 
-our $VERSION = '0.2'; # VERSION
+our $VERSION = '1.0'; # TRIAL VERSION
 
 use Moo;
 use MooX::Types::MooseLike::Base qw( InstanceOf Bool ArrayRef Int Str );
@@ -101,7 +101,7 @@ has safe => (
 has safe_opcodes => (
     is      => 'rw',
     isa     => ArrayRef[Str],
-    default => sub { [qw[ :default :load ]] },
+    default => sub { [qw[ :default require caller dofile ]] },
     trigger => sub {
         my $self = shift;
         $self->_safe->permit_only(@{ $_[0] });
@@ -195,7 +195,7 @@ Dancer2::Template::TextTemplate::FakeEngine - Fake Template::Toolkit-like, persi
 
 =head1 VERSION
 
-version 0.2
+version 1.0
 
 =head1 SYNOPSIS
 

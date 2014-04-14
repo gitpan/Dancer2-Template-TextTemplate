@@ -14,30 +14,31 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA256
 
-SHA1 44eebd79c21117f5568be28bcda0785d7c8ca011 Changes
-SHA1 94ed2b13dfcf3b32c0531f43ff8ff53360b0b3e3 INSTALL
+SHA1 c7e45199ebe33897a652de85b6df160212303200 Build.PL
+SHA1 2f25ff4ee1eac5f837f12c172455af85723e7cea Changes
+SHA1 73c4aa6d40ac2deaef2fc065f2ae5e4bd4ac9e5a INSTALL
 SHA1 a9ac9ac7df04d9cc581ea449e0fb8290551d0442 LICENSE
-SHA1 93330e3a9d382e8b3d84ce766e520103ff2d6f2a MANIFEST
-SHA1 2e5b542c8024ef5aadf3432c06c5bf22ef8c281a META.json
-SHA1 99d8682d82511ada3f3986f245e709b6ecdcafca META.yml
-SHA1 dc6ef4b39770d0cf12f189abc38fd390ea98277b Makefile.PL
-SHA1 5ed2742f25c9b1cda89fd5211b28c66da71696b5 README
+SHA1 0d65ede765126aea60f4e08c72d2cb92372d9023 MANIFEST
+SHA1 c5b24bf3bd7f980567f956bc9df7d97ca78cb730 META.json
+SHA1 71e3d6d7cd29f0bfa20ff770dbf6189de2a2296d META.yml
+SHA1 9f562bbc74afd491fd7a5cea4fa47001869486e4 Makefile.PL
+SHA1 7192a750e0adb34632bf3aea252dc2d929c727c8 README
 SHA1 cd89baefd166447e35fcafebaefbcbd3b8354bb2 TODO
-SHA1 d039c9c289e09a08e09890f1494a8af43d556d14 cpanfile
-SHA1 6eef5c1172ffee9699d2b02d3e38b7ddc5c34690 dist.ini
-SHA1 80b5f82b9a33d37e9fe63cf606b3147e60dd5b87 docs/html/Dancer2-Template-TextTemplate-FakeEngine.html
-SHA1 bb3fd573e13324136f1470d5d4d85978210c3685 docs/html/Dancer2-Template-TextTemplate.html
-SHA1 3d4e8c17af47a287c65f1c14c946d5882c8d70cd lib/Dancer2/Template/TextTemplate.pm
-SHA1 ff8186dcc1cfa9dc708b3c2b49e1ade9b3cb6312 lib/Dancer2/Template/TextTemplate/FakeEngine.pm
-SHA1 eacfc512554e8adea4409543ab42d5a471f6f2d8 t/000-report-versions-tiny.t
+SHA1 cd0a2cf4e50bd68781668a5d6251d2243896ab65 cpanfile
+SHA1 78024c65c41a9ef4bcfdfaeda74fa11dee2f1b26 dist.ini
+SHA1 f31d31e5dbf559111f6a11b50316489c3d8fa4b5 docs/html/Dancer2-Template-TextTemplate-FakeEngine.html
+SHA1 50c33fde5c277a69311dfc34621fe00359970960 docs/html/Dancer2-Template-TextTemplate.html
+SHA1 c1f6491fbe642e5be45d82eb1701723423895cf5 lib/Dancer2/Template/TextTemplate.pm
+SHA1 ff3970ef0ca5985970b1d645e0c0942dbc67b65b lib/Dancer2/Template/TextTemplate/FakeEngine.pm
+SHA1 2f3714d1bebb396966163e4160fe5c01f4e192ea t/000-report-versions-tiny.t
 SHA1 8efe9342265f0288fadb6019b6158f38d33fd580 t/00_base.t
 SHA1 71ece891a05a5d3d59f6ec29c515820e1dad4177 t/01_engine.t
 SHA1 d5196c01196615d84aa28e054ccb08b4536c83b8 t/02_fails.t
 SHA1 e5db73eab8ce5a3326f65af1b1a7f8ad7f7f3ed7 t/03_prepend.t
 SHA1 f17ba8a72e47c247df63fe3bad084767d549e841 t/04_safe.t
 SHA1 fa45d6e6ab1cd421349dea4ef527bfd5cdc8a09e t/author-critic.t
-SHA1 b7964cbcd01bb39ea8c93ccaec5ab705e1805282 t/author-pod-spell.t
-SHA1 46ebf8531d2cdb6af3e86147df7f4b39cdf62013 t/release-changes_has_content.t
+SHA1 388f0b4f54b76ba423b0e8dc0361a64e3d2a319a t/author-pod-spell.t
+SHA1 689cd09c4c5041435e553deec0b607ddc4c823b2 t/release-changes_has_content.t
 SHA1 d165f8ec069354540640243399f536af695046dd t/release-distmeta.t
 SHA1 a032c41ef6887fab1b900669c2d304fab46680e2 t/release-eol.t
 SHA1 3d3e9f1370ee4c83d847fe06b77bae14ac1e131a t/release-kwalitee.t
@@ -46,14 +47,14 @@ SHA1 54b7f39e355424cbc367105b84ff02a6cb29d93b t/release-mojibake.t
 SHA1 d4cdbc3d71deb103de6881008024aa1a4de9d94c t/release-no-tabs.t
 SHA1 5cf386f49901e8ccaad5ab271036754d67114081 t/release-pod-coverage.t
 SHA1 dc3eefcab3399f9a70861c332bb4a81ddcbb45e4 t/release-pod-syntax.t
-SHA1 b3350d3d17bb2fa4e23075ec8d786505cc565539 t/release-test-version.t
+SHA1 691424ec7d804174b4920e6e5f385e1e6cc36867 t/release-test-version.t
 SHA1 d7221447937ab93002a123801def7be09748c106 t/release-unused-vars.t
 SHA1 7e6909d2696e211381519ecc34ba60ab007a9619 t/test.template
 SHA1 dd98a2a084daf65fba9ecda2bea317e11cd1c690 weaver.ini
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.11 (GNU/Linux)
 
-iF4EAREIAAYFAlNFyVcACgkQdpkN8JGlVVqzmgEAgFbzndkOua0pqCid2QoZ1l5s
-GN0qSGwOhmoA2rPJihAA/3HBOw9PeGCxW0vBvX80MPd6V80DUMgGmP3EmG+D1+Y5
-=ao+v
+iF4EAREIAAYFAlNLMpgACgkQdpkN8JGlVVrjvgD/TGP/8Xz/ko7afIh8SoiujlrE
+fNmVbP9BFU9A/DnTcTQBAMMHuXsye8gSeoEiqavVMT9rU9mEeQxKDT8A5yk8VfCK
+=8d8T
 -----END PGP SIGNATURE-----

@@ -4,12 +4,15 @@ author:
   - 'Thibaut Le Page <thilp@cpan.org>'
 build_requires:
   File::Temp: '0'
+  IPC::System::Simple: '0'
+  Module::Build: '0.3601'
   Test::API: '0'
   Test::Fatal: '0'
   Test::More: '0.88'
   autodie: '0'
 configure_requires:
   ExtUtils::MakeMaker: '6.30'
+  Module::Build: '0.3601'
 dynamic_config: 0
 generated_by: 'Dist::Zilla version 5.015, CPAN::Meta::Converter version 2.140640'
 license: perl
@@ -27,10 +30,10 @@ no_index:
 provides:
   Dancer2::Template::TextTemplate:
     file: lib/Dancer2/Template/TextTemplate.pm
-    version: '0.2'
+    version: '1.0'
   Dancer2::Template::TextTemplate::FakeEngine:
     file: lib/Dancer2/Template/TextTemplate/FakeEngine.pm
-    version: '0.2'
+    version: '1.0'
 requires:
   CHI: '0'
   Carp: '0'
@@ -49,4 +52,4 @@ resources:
   bugtracker: https://github.com/thilp/Dancer2-Template-TextTemplate/issues
   homepage: https://github.com/thilp/Dancer2-Template-TextTemplate
   repository: https://github.com/thilp/Dancer2-Template-TextTemplate.git
-version: '0.2'
+version: '1.0'

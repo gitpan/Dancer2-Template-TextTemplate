@@ -12,8 +12,13 @@ requires "perl" => "5.008_009";
 requires "strict" => "0";
 requires "warnings" => "0";
 
+on 'build' => sub {
+  requires "Module::Build" => "0.3601";
+};
+
 on 'test' => sub {
   requires "File::Temp" => "0";
+  requires "IPC::System::Simple" => "0";
   requires "Test::API" => "0";
   requires "Test::Fatal" => "0";
   requires "Test::More" => "0.88";
@@ -22,6 +27,7 @@ on 'test' => sub {
 
 on 'configure' => sub {
   requires "ExtUtils::MakeMaker" => "6.30";
+  requires "Module::Build" => "0.3601";
 };
 
 on 'develop' => sub {
