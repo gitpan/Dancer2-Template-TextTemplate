@@ -14,22 +14,22 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA256
 
-SHA1 3766e6ebcf28a03f5291db2b26398ad63bdc1583 Build.PL
-SHA1 42854e0efef4ce812f1295e57172bd920fa55a73 Changes
+SHA1 fd084294d21d375aa6eef1d1f357feda02139940 Build.PL
+SHA1 d8a87102bdab0d449293a4322c9626a9c6b4d25d Changes
 SHA1 73c4aa6d40ac2deaef2fc065f2ae5e4bd4ac9e5a INSTALL
 SHA1 a9ac9ac7df04d9cc581ea449e0fb8290551d0442 LICENSE
 SHA1 e95fb5efcd1aa8ecc431915a0d4ffef6b658bdd9 MANIFEST
-SHA1 37b41f3f99fbb0fbc31cfa981ea38c60bdc6a6e9 META.json
-SHA1 e0ad1f27a819293d0d1d3f0514c1359a02dd1193 META.yml
-SHA1 075300f9b62d3e36920af9b663abf0c7c1419202 README
+SHA1 ed2823e48639e4c848efffece8366647d7b45bd0 META.json
+SHA1 c6a295f58d96c96d39d5ef2ddd946e5cece9ebfc META.yml
+SHA1 b1b54543253709be8fcb65928013f204cb99cfe0 README
 SHA1 cd89baefd166447e35fcafebaefbcbd3b8354bb2 TODO
-SHA1 d5f415385e5a8924d0411852e4323e4460a59658 cpanfile
+SHA1 175266be19f46ecac817c47083a91a009cf6975e cpanfile
 SHA1 706c8a5caa27162c7b6ca4f6be2427ded2b7ccf3 dist.ini
-SHA1 493f819252d2a4dd81583e86f640baf3342f028b docs/html/Dancer2-Template-TextTemplate-FakeEngine.html
-SHA1 af2d8c66958e8fb025f2991a71f699c7bc41d0ec docs/html/Dancer2-Template-TextTemplate.html
-SHA1 3016b66cd414823b63b738fdbfaedb4501a24e71 lib/Dancer2/Template/TextTemplate.pm
-SHA1 6930150b3eaa3612d94504a0b7815e02010cd518 lib/Dancer2/Template/TextTemplate/FakeEngine.pm
-SHA1 fe8a0057a64198a36d209a9af31dd8d991acfa45 t/000-report-versions-tiny.t
+SHA1 afa883e82c246f7b9e72e2ae95eddfefdeacbe95 docs/html/Dancer2-Template-TextTemplate-FakeEngine.html
+SHA1 4ed51b8669f0ae8be9b5914fb7592cf41b6f40a2 docs/html/Dancer2-Template-TextTemplate.html
+SHA1 07ed6420540211c0dd770d83ffeaf598d60f6f9f lib/Dancer2/Template/TextTemplate.pm
+SHA1 b7216e02d77fce51705dcd7fd1f72427171468e2 lib/Dancer2/Template/TextTemplate/FakeEngine.pm
+SHA1 2a6bc807b0553d2fddd8919871b65077d65d5d45 t/000-report-versions-tiny.t
 SHA1 8efe9342265f0288fadb6019b6158f38d33fd580 t/00_base.t
 SHA1 71ece891a05a5d3d59f6ec29c515820e1dad4177 t/01_engine.t
 SHA1 d5196c01196615d84aa28e054ccb08b4536c83b8 t/02_fails.t
@@ -37,7 +37,7 @@ SHA1 e5db73eab8ce5a3326f65af1b1a7f8ad7f7f3ed7 t/03_prepend.t
 SHA1 f17ba8a72e47c247df63fe3bad084767d549e841 t/04_safe.t
 SHA1 fa45d6e6ab1cd421349dea4ef527bfd5cdc8a09e t/author-critic.t
 SHA1 388f0b4f54b76ba423b0e8dc0361a64e3d2a319a t/author-pod-spell.t
-SHA1 8486c3e8f96364485c0ea79fc537c214af4197ae t/release-changes_has_content.t
+SHA1 e2e85ba845f222115b4d8898910cd72f8e646834 t/release-changes_has_content.t
 SHA1 d165f8ec069354540640243399f536af695046dd t/release-distmeta.t
 SHA1 a032c41ef6887fab1b900669c2d304fab46680e2 t/release-eol.t
 SHA1 3d3e9f1370ee4c83d847fe06b77bae14ac1e131a t/release-kwalitee.t
@@ -53,7 +53,7 @@ SHA1 dd98a2a084daf65fba9ecda2bea317e11cd1c690 weaver.ini
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.11 (GNU/Linux)
 
-iF4EAREIAAYFAlNMrhcACgkQdpkN8JGlVVoYzQEAx8VWVtPIESgw9jvZn1Y9EovP
-sGHa2AqtPSbglzSo66sA/1221UGjK6bSCnUv8VWCF2HH1J4HfbJW3CrpGahCJ0mv
-=yIGt
+iF4EAREIAAYFAlNNqZUACgkQdpkN8JGlVVok6wEAzewixHBlrvNUWkE2oOnDSN4W
+yk++P1MxW9GNwOR9U0cBAIdUh/Yup4KZKjnY+dpJEOL1K4Wtj0P40n8btjZHYJ3y
+=lN8m
 -----END PGP SIGNATURE-----

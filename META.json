@@ -54,11 +54,11 @@
             "Dancer2::Core::Types" : "0",
             "Moo" : "0",
             "MooX::Types::MooseLike::Base" : "0",
-            "Safe" : "2.14",
+            "Safe" : "2.26",
             "Scalar::Util" : "0",
             "Text::Template" : "1.46",
             "namespace::clean" : "0",
-            "perl" : "5.008_009",
+            "perl" : "5.010_000",
             "strict" : "0",
             "warnings" : "0"
          }
@@ -77,14 +77,14 @@
    "provides" : {
       "Dancer2::Template::TextTemplate" : {
          "file" : "lib/Dancer2/Template/TextTemplate.pm",
-         "version" : "1.001"
+         "version" : "1.002"
       },
       "Dancer2::Template::TextTemplate::FakeEngine" : {
          "file" : "lib/Dancer2/Template/TextTemplate/FakeEngine.pm",
-         "version" : "1.001"
+         "version" : "1.002"
       }
    },
-   "release_status" : "stable",
+   "release_status" : "testing",
    "resources" : {
       "bugtracker" : {
          "web" : "https://github.com/thilp/Dancer2-Template-TextTemplate/issues"
@@ -96,6 +96,6 @@
          "web" : "https://github.com/thilp/Dancer2-Template-TextTemplate"
       }
    },
-   "version" : "1.001"
+   "version" : "1.002"
 }
 

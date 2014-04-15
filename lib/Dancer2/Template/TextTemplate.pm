@@ -1,11 +1,11 @@
 package Dancer2::Template::TextTemplate;
 # ABSTRACT: Text::Template engine for Dancer2
 
-use 5.008_009;
+use 5.010_000;
 use strict;
 use warnings;
 
-our $VERSION = '1.001'; # VERSION
+our $VERSION = '1.002'; # TRIAL VERSION
 
 use Carp 'croak';
 use Moo;
@@ -49,7 +49,7 @@ Dancer2::Template::TextTemplate - Text::Template engine for Dancer2
 
 =head1 VERSION
 
-version 1.001
+version 1.002
 
 =head1 SYNOPSIS
 

@@ -1,18 +1,17 @@
 package Dancer2::Template::TextTemplate::FakeEngine;
 # ABSTRACT: Fake Template::Toolkit-like, persistent engine around Text::Template.
 
-use 5.008_009;
 use strict;
 use warnings;
 
-our $VERSION = '1.001'; # VERSION
+our $VERSION = '1.002'; # TRIAL VERSION
 
 use Moo;
 use MooX::Types::MooseLike::Base qw( InstanceOf Bool ArrayRef Int Str );
 use Carp 'croak';
 use Text::Template 1.46;
 use CHI;
-use Safe 2.14;
+use Safe 2.26;
 use Scalar::Util 'blessed';
 use namespace::clean;
 
@@ -195,7 +194,7 @@ Dancer2::Template::TextTemplate::FakeEngine - Fake Template::Toolkit-like, persi
 
 =head1 VERSION
 
-version 1.001
+version 1.002
 
 =head1 SYNOPSIS
 

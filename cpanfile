@@ -4,11 +4,11 @@ requires "Dancer2::Core::Role::Template" => "0";
 requires "Dancer2::Core::Types" => "0";
 requires "Moo" => "0";
 requires "MooX::Types::MooseLike::Base" => "0";
-requires "Safe" => "2.14";
+requires "Safe" => "2.26";
 requires "Scalar::Util" => "0";
 requires "Text::Template" => "1.46";
 requires "namespace::clean" => "0";
-requires "perl" => "5.008_009";
+requires "perl" => "5.010_000";
 requires "strict" => "0";
 requires "warnings" => "0";
 
