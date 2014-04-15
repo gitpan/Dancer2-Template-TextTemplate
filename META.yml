@@ -11,7 +11,6 @@ build_requires:
   Test::More: '0.88'
   autodie: '0'
 configure_requires:
-  ExtUtils::MakeMaker: '6.30'
   Module::Build: '0.3601'
 dynamic_config: 0
 generated_by: 'Dist::Zilla version 5.015, CPAN::Meta::Converter version 2.140640'
@@ -30,10 +29,10 @@ no_index:
 provides:
   Dancer2::Template::TextTemplate:
     file: lib/Dancer2/Template/TextTemplate.pm
-    version: '1.0'
+    version: '1.001'
   Dancer2::Template::TextTemplate::FakeEngine:
     file: lib/Dancer2/Template/TextTemplate/FakeEngine.pm
-    version: '1.0'
+    version: '1.001'
 requires:
   CHI: '0'
   Carp: '0'
@@ -52,4 +51,4 @@ resources:
   bugtracker: https://github.com/thilp/Dancer2-Template-TextTemplate/issues
   homepage: https://github.com/thilp/Dancer2-Template-TextTemplate
   repository: https://github.com/thilp/Dancer2-Template-TextTemplate.git
-version: '1.0'
+version: '1.001'

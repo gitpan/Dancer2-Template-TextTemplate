@@ -52,7 +52,6 @@ eval { $v .= pmver('CHI','any version') };
 eval { $v .= pmver('Carp','any version') };
 eval { $v .= pmver('Dancer2::Core::Role::Template','any version') };
 eval { $v .= pmver('Dancer2::Core::Types','any version') };
-eval { $v .= pmver('ExtUtils::MakeMaker','6.30') };
 eval { $v .= pmver('File::Temp','any version') };
 eval { $v .= pmver('IPC::System::Simple','any version') };
 eval { $v .= pmver('Module::Build','0.3601') };

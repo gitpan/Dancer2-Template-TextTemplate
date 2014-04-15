@@ -26,7 +26,6 @@ on 'test' => sub {
 };
 
 on 'configure' => sub {
-  requires "ExtUtils::MakeMaker" => "6.30";
   requires "Module::Build" => "0.3601";
 };
 

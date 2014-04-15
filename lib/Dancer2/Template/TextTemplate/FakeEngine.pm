@@ -5,7 +5,7 @@ use 5.008_009;
 use strict;
 use warnings;
 
-our $VERSION = '1.0'; # TRIAL VERSION
+our $VERSION = '1.001'; # VERSION
 
 use Moo;
 use MooX::Types::MooseLike::Base qw( InstanceOf Bool ArrayRef Int Str );
@@ -195,7 +195,7 @@ Dancer2::Template::TextTemplate::FakeEngine - Fake Template::Toolkit-like, persi
 
 =head1 VERSION
 
-version 1.0
+version 1.001
 
 =head1 SYNOPSIS
 
