@@ -4,7 +4,7 @@ package Dancer2::Template::TextTemplate::FakeEngine;
 use strict;
 use warnings;
 
-our $VERSION = '1.002'; # TRIAL VERSION
+our $VERSION = '1.003'; # VERSION
 
 use Moo;
 use MooX::Types::MooseLike::Base qw( InstanceOf Bool ArrayRef Int Str );
@@ -194,7 +194,7 @@ Dancer2::Template::TextTemplate::FakeEngine - Fake Template::Toolkit-like, persi
 
 =head1 VERSION
 
-version 1.002
+version 1.003
 
 =head1 SYNOPSIS
 

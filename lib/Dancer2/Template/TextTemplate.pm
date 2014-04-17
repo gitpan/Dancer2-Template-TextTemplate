@@ -5,7 +5,7 @@ use 5.010_000;
 use strict;
 use warnings;
 
-our $VERSION = '1.002'; # TRIAL VERSION
+our $VERSION = '1.003'; # VERSION
 
 use Carp 'croak';
 use Moo;
@@ -49,7 +49,7 @@ Dancer2::Template::TextTemplate - Text::Template engine for Dancer2
 
 =head1 VERSION
 
-version 1.002
+version 1.003
 
 =head1 SYNOPSIS
 
